@@ -14,16 +14,14 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public String saveUser(User user) {
+	public User saveUser(User user) {
 
 		if (findByEmail(user.getEmail()) != null) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, 
 	                "User already exists with email : " + user.getEmail());
 		}
 		else {
-//			user.setUid(UUID.randomUUID().toString());
-			userRepository.save(user);
-			return "User created successfully with email : " + user.getEmail();
+			return userRepository.save(user);
 		}
 	}
 	
