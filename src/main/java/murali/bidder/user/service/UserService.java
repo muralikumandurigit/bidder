@@ -25,14 +25,11 @@ public class UserService {
 		}
 	}
 	
-	public User findByEmail(String email) {
+	private User findByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
 
 	public Boolean isValidUser(String email) {
-		if (findByEmail(email) != null) {
-			return true;
-		}
-		return false;
+		return findByEmail(email) != null ? true : false;
 	}
 }
